@@ -1,0 +1,32 @@
+const int ledPin = 7;
+int blinkCount = 0; 
+
+void setup() {
+  pinMode(ledPin, OUTPUT); 
+}
+
+void loop() {
+  digitalWrite(ledPin, LOW); // LED를 켭니다
+  delay(1000); 
+
+  // LED를 0.2초 간격으로 5회 깜빡입니다
+  for (int i = 0; i < 5; i++) {
+    digitalWrite(ledPin, HIGH); // LED를 끕니다
+    delay(200); // 0.2초 동안 유지
+    digitalWrite(ledPin, LOW); // LED를 켭니다
+    delay(200); // 0.2초 동안 유지
+  }
+
+  digitalWrite(ledPin, HIGH); // LED를 끕니다
+  delay(1000); //
+  
+  blinkCount++; // 깜빡인 횟수 증가
+
+  // 5회 깜빡이면 루프를 빠져나와 꺼진 상태를 유지합니다
+  if (blinkCount >= 5) {
+    while (true) {
+      // 계속 꺼진 상태를 유지합니다
+      digitalWrite(ledPin, HIGH);
+    }
+  }
+}
